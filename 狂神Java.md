@@ -48,9 +48,39 @@ cd ..   cd /d C:\Users\Administrator\Desktop 进入不同盘符
 
 ```
 
+返回上一层目录       cd ../
+
 # IDEA小技巧
 
 1. 创建对象快捷键 alt+enter   或者按住shift点击灯泡
+
+
+
+# Git常见命令
+
+ 克隆：**git clone** https:**//**github.com**/**tianqixin**/**runoob-git-test
+
+## git上传文件步骤：
+
+第一步：右击将要上传的文件夹，在右键菜单栏里选择Git Bash Here选项
+
+第二步：在弹出的Git命令窗口中输入git init
+
+第三步：复制gitee仓库的HTTPS链接(最好是ssh链接)
+
+第四步：在Git命令窗口中输入git remote add origin+复制出来的仓库的HTTPS链接
+
+第五步：在Git命令窗口中输入git pull origin master 并在弹出的窗口中输入码云登陆的对应的账号和密码(可以开始时弄好，设置无密码)
+
+第六步：输入git add .（.表示所有文件）或者git add + 文件名（作用：将文件保存到缓存区）
+
+第七步：输入git [commit](https://so.csdn.net/so/search?q=commit&spm=1001.2101.3001.7020) -m ‘文件描述’(文件描述的内容随便写)
+
+第八步：输入git push origin master ，将本地仓库推送到远程仓库
+
+第九步：完成以上操作后即可前往码云查看刚才上传的结果
+
+[git上传步骤]: https://blog.csdn.net/qq_45083936/article/details/117327824
 
 
 
@@ -336,6 +366,43 @@ next():
  nextLine()： 
 
 1. 以Enter为结束符,也就是说 nextLine()方法返回的是输入回车之前的所有字符。
-
 2.  可以获得空白。
 
+
+
+## 六. 方法
+
+### 1.定义原则
+
+原子性，一个方法只实现一个功能，这样利于我们后期的扩展。
+
+### 2.方法的定义和调用
+
+return不光可以返回值，也可以终止方法
+
+注意：java都是值传递
+
+### 3.方法的重载
+
+重载原则：
+
+1. 方法名必须相同
+2. 方法的参数个数或者类型不相同
+
+### 4.命令行传参
+
+使用cmd 命令行执行java 程序必须回到src目录进行执行 
+
+返回上一层目录 cd ../
+
+java com.ty.basic.com.ty.method.Demo02 this is ok
+
+### 5.可变参数
+
+可变参数的定义必须在方法的最后一个参数，任何普通类型参数必须在它之前进行声明，并且一个方法只能定义一个可变参数 
+
+void add(int a,double ...b)
+
+### 6.递归
+
+![image-20220516165945877](assets/狂神Java/image-20220516165945877-16526915928131.png)

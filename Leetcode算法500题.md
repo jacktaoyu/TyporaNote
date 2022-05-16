@@ -1,3 +1,5 @@
+宫水三叶刷题指南：  https://github.com/SharingSource/LogicStack-LeetCode/wiki
+
 # 常用函数
 
 ## 1. insert
@@ -14,7 +16,15 @@ if (str1.length() != 10){
 //如果str1的长度不够10，就会给它的左侧补"0"一直补10位
 ```
 
+## 2.java双端队列
 
+https://blog.csdn.net/qq_43431863/article/details/123082435
+
+
+
+## 3.substring(start,end)
+
+截取从start到end-1的字符串
 
 # 一 递归
 
@@ -505,8 +515,58 @@ if (str1.length() != 10){
 |日期|题号|次数|对错|
 |:--:|:--:|:--:|:--:|
 |5.11|94|2|√|
+|5.12|144|2|√|
+|5.12|145|2|√|
+|5.12|101|2|×|
 
-| 5.11 | 144  | 2    | √    |
-| ---- | ---- | ---- | ---- |
-|      |      |      |      |
+## [101. 对称二叉树](https://leetcode.cn/problems/symmetric-tree/)
+
+方法一：递归
+
+```java
+public boolean isSymmetricDFS(TreeNode left,TreeNode right){
+        //如果左右节点均为空，则为true
+        if(left==null&&right==null) return true;
+        //如果左右节点均不为空，返回false
+        if(left==null||right==null) return false;
+        //如果左右节点的值不相等，返回false
+        if(left.val!=right.val) return false;
+        //递归比较左节点的左节点和右节点的右节点 左节点的右节点和右节点的左节点
+        return isSymmetricDFS(left.left,right.right)&&isSymmetricDFS(left.right,right.left);
+    }
+```
+
+
+
+方法二：双端队列
+
+```java
+ public boolean isSymmetricSql(TreeNode node){
+        Deque<TreeNode> deque=new LinkedList<>();
+        //将左节点放入对首
+        deque.offerFirst(node.left);
+        //将右节点放入队尾
+        deque.offerLast(node.right);
+        while(!deque.isEmpty()){
+            //出队队首元素
+            TreeNode leftNode=deque.pollFirst();
+            //出队队尾元素
+            TreeNode rightNode=deque.pollLast();
+            //当左右节点都为null时，继续循环
+            if(leftNode==null&&rightNode==null) continue;
+            //当左右节点不同时为空或者左右节点的值不相等时返回false
+            if(leftNode==null||rightNode==null||leftNode.val!=rightNode.val) return false;
+            //把左节点的左节点入队首
+            deque.offerFirst(leftNode.left);
+            //把左节点的右节点入队首
+            deque.offerFirst(leftNode.right);
+            //把右节点的右节点入队
+            deque.offerLast(rightNode.right);
+            //把右节点的左节点入队尾
+            deque.offerLast(rightNode.left);
+        }
+        return true;
+    }
+}
+```
 
